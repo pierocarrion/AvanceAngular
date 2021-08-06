@@ -1,0 +1,30 @@
+<h1>Libros</h1>
+
+<button [routerLink]='["/libros-agregar"]' class="btn btn-primary">Agregar Libro</button>
+
+<p *ngIf="!(libros && libros.length)">
+  No existen libros
+</p>
+
+<table class="table" *ngIf="libros && libros.length">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha Nacimiento</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let libro of libros">
+      <td>{{libro.ID}}</td>
+      <td>{{libro.Titulo}}</td>
+      <td>{{libro.Autor}}</td>
+      <td>{{libro.Anio}}</td>
+      <td>{{libro.Precio}}</td>
+      <td>
+        <button class="btn btn-primary" [routerLink]='["/libros-editar/" + libro.id]'>Editar</button>
+        <button class="btn btn-danger" (click)="delete(libros)">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
